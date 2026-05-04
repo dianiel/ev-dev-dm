@@ -1,0 +1,27 @@
+#Start projektu
+git clone https://github.com/ewoludev/ed-starter.git
+cd ed-starter
+npm install
+
+#Uruchomienie dev servera
+npm run dev
+
+
+# Z1-02.01 - Konteneryzacja
+
+## Build (naive)
+docker build -f Dockerfile.naive -t runwaybriefing:naive .
+
+## Build (multi-stage)
+docker build -f Dockerfile -t runwaybriefing:multi .
+
+## Run (test)
+docker run --rm -p 3001:3000 runwaybriefing:naive
+docker run --rm -p 3002:3000 runwaybriefing:multi
+
+## Rozmiary obrazów
+- runwaybriefing:naive = 2.27GB
+- runwaybriefing:multi = 229MB
+
+## Różnica
+- oszczędność: ~2.04GB (~90% mniejszy obraz)
